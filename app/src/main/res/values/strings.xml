@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name">SPM</string>
+    <!-- Strings related to login -->
+    <string name="prompt_register">Email</string>
+    <string name="prompt_password">Senha</string>
+    <string name="action_sign_in">ENTRAR</string>
+    <string name="action_sign_in_short">Sign in</string>
+
+    <!--Login-->
+    <string name="login_register">Cadastrar-se</string>
+
+    <!--Register User-->
+    <string name="register_tool_title_register">Registrar Usuário</string>
+    <string name="register_hint_name">Nome</string>
+    <string name="register_hint_email">Email</string>
+    <string name="register_hint_password">Senha</string>
+    <string name="register_button_register">CADASTRAR</string>
+    <string name="ic_back">voltar</string>
+
+    <string name="error_msg_no_network">OPS! ALGO DEU ERRADO.\nCertifique-se de que você tem uma conexão ativa com a internet móvel ou wi-fi antes de prosseguir</string>
+    <string name="default_error_msg">Algo deu errado! Não foi possível atender sua solicitação neste momento. Por favor, tente novamente.</string>
+    <string name="logo">logo</string>
+    <string name="home_list_empty">Cadastre seu Primeiro Site</string>
+
+    <string name="register_site_toolbar">Cadastrar Site</string>
+    <string name="register_site_hint_site">Site</string>
+    <string name="register_site_bt_register">CADASTRAR</string>
+    <string name="ic_menu">menu</string>
+    <string name="ic_site">logo</string>
+    <string name="details_site_url">Url</string>
+    <string name="details_site_name">Nome</string>
+    <string name="details_site_email">Email</string>
+    <string name="details_site_password">Senha</string>
+</resources>

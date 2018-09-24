@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="br.com.zup.multistatelayout.MultiStateLayout"/>
+        <variable
+            name="register"
+            type="br.com.spm.viewmodel.RegisterUserViewModel"/>
+    </data>
+
+    <br.com.zup.multistatelayout.MultiStateLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:msl_loadingLayout="@layout/ms_loading_view"
+        app:msl_state="@{register.showLoading ? MultiStateLayout.State.LOADING : MultiStateLayout.State.CONTENT}">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/white">
+
+            <RelativeLayout
+                android:id="@+id/relative_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@android:color/white">
+
+                <ImageButton
+                    android:id="@+id/bt_back"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:background="?selectableItemBackgroundBorderless"
+                    android:contentDescription="@string/ic_back"
+                    android:onClick="@{() -> register.onBack()}"
+                    android:padding="@dimen/default_margin"
+                    app:srcCompat="@drawable/ic_back"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@+id/bt_back"
+                    android:paddingBottom="@dimen/default_margin"
+                    android:paddingTop="@dimen/default_margin"
+                    android:singleLine="true"
+                    android:text="@string/register_tool_title_register"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/toolbar_size"/>
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/relative_toolbar"
+                android:layout_marginTop="@dimen/default_margin"
+                android:orientation="vertical"
+                android:padding="@dimen/default_padding">
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/edit_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_small"
+                        android:hint="@string/register_hint_name"
+                        android:maxLength="20"/>
+
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/edit_email"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_small"
+                        android:hint="@string/register_hint_email"
+                        android:inputType="textEmailAddress"
+                        android:maxLength="20"/>
+
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/edit_password"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_small"
+                        android:hint="@string/register_hint_password"
+                        android:inputType="textPassword"
+                        android:maxLength="10"/>
+
+                </android.support.design.widget.TextInputLayout>
+
+            </LinearLayout>
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/button_register"
+                style="@style/ButtonBlue"
+                android:layout_width="match_parent"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="@dimen/default_margin"
+                android:layout_marginEnd="@dimen/default_margin"
+                android:layout_marginLeft="@dimen/default_margin"
+                android:layout_marginRight="@dimen/default_margin"
+                android:layout_marginStart="@dimen/default_margin"
+                android:onClick="@{() -> register.onRegister()}"
+                android:text="@string/register_button_register"/>
+
+        </RelativeLayout>
+    </br.com.zup.multistatelayout.MultiStateLayout>
+
+</layout>
