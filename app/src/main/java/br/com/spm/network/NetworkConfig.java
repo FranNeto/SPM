@@ -3,6 +3,7 @@ package br.com.spm.network;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
+import br.com.spm.model.bo.SPMBO;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -36,7 +37,7 @@ public class NetworkConfig {
 
             final Request original = chain.request();
             Request.Builder requestBuilder = original.newBuilder();
-
+            authorization = SPMBO.getInstance().getToken();
             if (!isEmpty(authorization)) {
                 requestBuilder.addHeader(AUTHORIZATION, authorization);
             }else{
@@ -50,10 +51,6 @@ public class NetworkConfig {
 
         }
     };
-
-    public static void setAuthorization(String authorization){
-        NetworkConfig.authorization = authorization;
-    }
 
     private static boolean isEmpty(String str) {
         if (str == null) return true;

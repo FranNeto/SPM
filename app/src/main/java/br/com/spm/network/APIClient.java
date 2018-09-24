@@ -18,9 +18,4 @@ public class APIClient {
         Retrofit retrofit = builder.client(httpClient).build();
         return retrofit.create(serviceClass);
     }
-
-    public void setAuthorization(String authorization) {
-        NetworkConfig.setAuthorization(authorization);
-    }
-
 }

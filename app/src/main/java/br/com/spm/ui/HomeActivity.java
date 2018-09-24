@@ -16,7 +16,6 @@ import br.com.spm.databinding.ActivityHomeBinding;
 import br.com.spm.di.component.DaggerGenericComponent;
 import br.com.spm.di.module.GenericModule;
 import br.com.spm.model.entity.SiteEntity;
-import br.com.spm.network.NetworkConfig;
 import br.com.spm.ui.adapter.HomeAdapter;
 import br.com.spm.viewmodel.HomeViewModel;
 
@@ -60,9 +59,6 @@ public class HomeActivity extends BaseActivity implements HomeViewModel.HomeList
         viewModel.getLogo().observe(this, new Observer<List<SiteEntity>>() {
             @Override
             public void onChanged(@Nullable List<SiteEntity> siteEntityList) {
-                if (siteEntity != null && siteEntity.getToken() != null) {
-                    NetworkConfig.setAuthorization(siteEntity.getToken());
-                }
                 if (siteEntityList != null && siteEntityList.size() > 0) {
                     binding.recyclerHome.setVisibility(View.VISIBLE);
                     binding.linearEmpty.setVisibility(View.GONE);

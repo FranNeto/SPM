@@ -10,6 +10,7 @@ import br.com.spm.SPMApplication;
 import br.com.spm.databinding.ActivityLoginBinding;
 import br.com.spm.di.component.DaggerGenericComponent;
 import br.com.spm.di.module.GenericModule;
+import br.com.spm.model.bo.SPMBO;
 import br.com.spm.model.domain.User;
 import br.com.spm.model.domain.UserResponse;
 import br.com.spm.model.entity.SiteEntity;
@@ -41,6 +42,7 @@ public class LoginActivity extends BaseActivity implements LoginViewModel.LoginL
     protected void initBinding() {
         binding = (ActivityLoginBinding) getDataBinding();
         binding.setLogin(viewModel);
+        SPMBO.getInstance().setToken("");
     }
 
     @Override
@@ -58,6 +60,9 @@ public class LoginActivity extends BaseActivity implements LoginViewModel.LoginL
 
     @Override
     public void onSuccess(UserResponse response) {
+
+        SPMBO.getInstance().setToken(response.getToken());
+
         SiteEntity siteEntity = new SiteEntity();
         siteEntity.setEmail(user.getEmail());
         siteEntity.setPassword(user.getPassword());

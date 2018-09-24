@@ -11,7 +11,6 @@ import br.com.spm.databinding.ActivityRegisterSiteBinding;
 import br.com.spm.di.component.DaggerGenericComponent;
 import br.com.spm.di.module.GenericModule;
 import br.com.spm.model.entity.SiteEntity;
-import br.com.spm.network.NetworkConfig;
 import br.com.spm.viewmodel.RegisterSiteViewModel;
 
 import static br.com.spm.ui.HomeActivity.USER_DATA;
@@ -48,7 +47,10 @@ public class RegisterSiteActivity extends BaseActivity implements RegisterSiteVi
     public void getUser() {
         if (isGetExtra(USER_DATA)) {
             siteEntity = (SiteEntity) getIntent().getExtras().getSerializable(USER_DATA);
-            NetworkConfig.setAuthorization(siteEntity.getToken());
+            if(siteEntity != null && siteEntity.getUrl() != null && siteEntity.getId() > 0){
+                binding.editSite.setText(siteEntity.getUrl());
+            }
+
         }
     }
 
@@ -79,7 +81,6 @@ public class RegisterSiteActivity extends BaseActivity implements RegisterSiteVi
         }else{
             viewModel.insertUser(siteEntity);
         }
-
     }
 
     @Override
